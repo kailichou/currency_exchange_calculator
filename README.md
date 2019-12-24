@@ -3,8 +3,8 @@ The exchange rates are only update-to-date after you run the script again.
 
 
 Library needed:
-BeautifulSoup
-Pandas
+- BeautifulSoup
+- Pandas
 
 Feel free to download the file and run it whenever you need a csv file including currency exchange rates
 
