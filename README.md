@@ -1,4 +1,4 @@
-# currency exchange rates
+# Currency Exchange Rates
 The exchange rates are only update-to-date after you run the script again.
 
 
