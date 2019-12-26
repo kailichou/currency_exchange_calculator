@@ -12,6 +12,8 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 import pandas as pd
 
+
+##the website that we will scrape currency exchange rates
 url = 'https://www.x-rates.com/table/?from=USD&amount=1'
 
 def crawler(self):
@@ -32,8 +34,6 @@ def crawler(self):
     
     
 
-
-
 ##run crawler function to collect up-to-date exchange rates
 crawler(url)
 
@@ -44,7 +44,7 @@ rates_df.set_index('US Dollar', inplace=True)
 rates_df = rates_df.drop('US Dollar')
 rates_df = rates_df[['1.00 USD','inv. 1.00 USD']].astype('float64')
 currencies = rates_df.index.values
-#rates_df.to_csv('currencyrates.csv')
+#rates_df.to_csv('currencyrates.csv') #save exchange rate to a csv file
 
 
 
@@ -203,6 +203,6 @@ class calculator(object):
             print('currency not found!')
 
 
-#print 1000 AUD to USD
+#exchange 1000 AUD to USD
 #print(calculator.AUDtoUSD(1000))
             
