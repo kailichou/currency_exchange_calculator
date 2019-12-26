@@ -6,7 +6,7 @@ Library needed:
 - BeautifulSoup
 - Pandas
 
-Feel free to download the file and run it whenever you need a csv file including currency exchange rates
+Feel free to download the file to calculate curencies for fun or import it for other uses.
 
 ## Currencies including
 
