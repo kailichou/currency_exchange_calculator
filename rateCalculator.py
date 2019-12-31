@@ -49,74 +49,78 @@ currencies = rates_df.index.values
 
 
 class calculator(object):
-    '''This is a currency calculator with 10 currencies available to apply for'''
-        
+       
     def toEUR(self):
         if 'Euro' in currencies:
-            return self * rates_df.loc[['Euro'],['1.00 USD']]
+            return self * rates_df.at['Euro','1.00 USD']
         else:
             print('currency not found')
     
     
     def EURtoUSD(self):
         if 'Euro' in currencies:
-            return self * rates_df.loc[['Euro'],['inv. 1.00 USD']]
+            return self * rates_df.at['Euro','inv. 1.00 USD']
         else:
             print('currency not found!')
  
 
     def toGBP(self):
         if 'British Pound' in currencies:
-            return self * rates_df.loc[['British Pound'],['1.00 USD']]
+            return self * rates_df.at['British Pound','1.00 USD']
         else:
             print('currency not found!')
             
             
     def GBPtoUSD(self):
         if 'British Pound' in currencies:
-            return self * rates_df.loc[['British Pound'],['inv. 1.00 USD']]
+            return self * rates_df.at['British Pound','inv. 1.00 USD']
         else:
             print('currency not found!')
-
+    
+    def EURtoGBP(self):
+        if 'Euro' and 'Britis Pound' in currencies:
+            return self * (rates_df.at['Euro','inv. 1.00 USD'] * rates_df.at['British Pound','1.00 USD'])
+        else:
+            print('currency not found!')
             
     def toINR(self):
         if 'Indian Rupee' in currencies:
-            return self * rates_df.loc[['Indian Rupee'],['1.00 USD']]
+            return self * rates_df.at['Indian Rupee','1.00 USD']
         else:
             print('currency not found!')
     
     
     def INRtoUSD(self):
         if 'Indian Rupee' in currencies:
-            return self * rates_df.loc[['Indian Rupee'],['inv. 1.00 USD']]  
+            return self * rates_df.at['Indian Rupee','inv. 1.00 USD']  
         else:
             print('currency not found!')
   
 
     def toAUD(self):
         if 'Australian Dollar' in currencies:
-            return self * rates_df.loc[['Australian Dollar'],['1.00 USD']]
+            return self * rates_df.at['Australian Dollar','1.00 USD']
         else:
             print('currency not found!')
     
     
     def AUDtoUSD(self):
         if 'Australian Dollar' in currencies:
-            return self * rates_df.loc[['Australian Dollar'], ['inv. 1.00 USD']]  
+            return self * rates_df.at['Australian Dollar', 'inv. 1.00 USD']
         else:
             print('currency not found!')
     
     
     def toCAD(self):
         if 'Canadian Dollar' in currencies:
-            return self * rates_df.loc[['Canadian Dollar'], ['1.00 USD']]  
+            return self * rates_df.at['Canadian Dollar', '1.00 USD']
         else:
             print('currency not found!')
             
     
     def CADtoUSD(self):
         if 'Canadian Dollar' in currencies:
-            return self * rates_df.loc[['Canadian Dollar'], ['inv. 1.00 USD']]  
+            return self * rates_df.at['Canadian Dollar', 'inv. 1.00 USD']
         else:
             print('currency not found!')
             
@@ -124,7 +128,7 @@ class calculator(object):
     
     def toSGD(self):
         if 'Singapore Dollar' in currencies:
-            return self * rates_df.loc[['Singapore Dollar'], ['1.00 USD']]  
+            return self * rates_df.at['Singapore Dollar', '1.00 USD']
         else:
             print('currency not found!')
             
@@ -132,14 +136,14 @@ class calculator(object):
     
     def SGDtoUSD(self):
         if 'Singapore Dollar' in currencies:       
-            return self * rates_df.loc[['Singapore Dollar'], ['inv. 1.00 USD']]  
+            return self * rates_df.at['Singapore Dollar', 'inv. 1.00 USD']
         else:
             print('currency not found!')
             
             
     def toCHF(self):
         if 'Swiss Franc' in currencies:
-            return self * rates_df.loc[['Swiss Franc'], ['1.00 USD']] 
+            return self * rates_df.at['Swiss Franc', '1.00 USD']
         else:
             print('currency not found!')
             
@@ -147,7 +151,7 @@ class calculator(object):
 
     def CHFtoUSD(self):
         if 'Swiss Franc' in currencies:
-            return self * rates_df.loc[['Swiss Franc'], ['inv. 1.00 USD']] 
+            return self * rates_df.at['Swiss Franc', 'inv. 1.00 USD']
         
         else:
             print('currency not found!')
@@ -157,7 +161,7 @@ class calculator(object):
     
     def toMYR(self):
         if 'Malaysian Ringgit' in currencies:
-            return self * rates_df.loc[['Malaysian Ringgit'], ['1.00 USD']] 
+            return self * rates_df.at['Malaysian Ringgit', '1.00 USD']
         else:
             print('currency not found!')  
     
@@ -165,7 +169,7 @@ class calculator(object):
     
     def MYRtoUSD(self):
         if 'Malaysian Ringgit' in currencies:
-            return self * rates_df.loc[['Malaysian Ringgit'], ['inv. 1.00 USD']] 
+            return self * rates_df.at['Malaysian Ringgit', 'inv. 1.00 USD']
         else:
             print('currency not found!')
             
@@ -174,7 +178,7 @@ class calculator(object):
        
     def toJPY(self):
         if 'Japanese Yen' in currencies:
-            return self * rates_df.loc[['Japanese Yen'], ['1.00 USD']] 
+            return self * rates_df.at['Japanese Yen', '1.00 USD']
         else:
             print('currency not found!')   
             
@@ -182,7 +186,7 @@ class calculator(object):
     
     def JPYtoUSD(self):
         if 'Japanese Yen' in currencies:
-            return self * rates_df.loc[['Japanese Yen'], ['inv. 1.00 USD']] 
+            return self * rates_df.at['Japanese Yen', 'inv. 1.00 USD']
         else:
             print('currency not found!')
             
@@ -190,7 +194,7 @@ class calculator(object):
     
     def toCNY(self):
         if 'Chinese Yuan Renminbi' in currencies:
-            return self * rates_df.loc[['Chinese Yuan Renminbi'],['1.00 USD']]
+            return self * rates_df.at['Chinese Yuan Renminbi','1.00 USD']
         else:
             print('currency not found!')
             
@@ -198,11 +202,18 @@ class calculator(object):
             
     def CNYtoUSD(self):
         if 'Chinese Yuan Renminbi' in currencies:
-            return self * rates_df.loc[['Chinese Yuan Renminbi'], ['inv. 1.00 USD']]
+            return self * rates_df.at['Chinese Yuan Renminbi', 'inv. 1.00 USD']
+        else:
+            print('currency not found!')
+            
+            
+            
+    def GBPtoCNY(self):
+        if 'British Pound' and 'Chinese Yuan Renminbi' in currencies:
+            return self * (rates_df.at['British Pound','inv. 1.00 USD'] * rates_df.at['Chinese Yuan Renminbi','1.00 USD'])
         else:
             print('currency not found!')
 
-
-#exchange 1000 AUD to USD
-#print(calculator.AUDtoUSD(1000))
+#exchange 200 GBP to CNY
+#print(calculator.GBPtoCNY(200))
             
