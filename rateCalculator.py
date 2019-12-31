@@ -49,7 +49,9 @@ currencies = rates_df.index.values
 
 
 class calculator(object):
-       
+    '''This is a currency calculator with 10 currencies available to apply for'''
+    
+        
     def toEUR(self):
         if 'Euro' in currencies:
             return self * rates_df.at['Euro','1.00 USD']
@@ -76,12 +78,22 @@ class calculator(object):
             return self * rates_df.at['British Pound','inv. 1.00 USD']
         else:
             print('currency not found!')
-    
+            
+            
     def EURtoGBP(self):
         if 'Euro' and 'Britis Pound' in currencies:
             return self * (rates_df.at['Euro','inv. 1.00 USD'] * rates_df.at['British Pound','1.00 USD'])
         else:
             print('currency not found!')
+            
+            
+    def GBPtoEUR(self):
+        if 'Euro' and 'Britis Pound' in currencies:
+            return self * (rates_df.at['British Pound','inv. 1.00 USD'] * rates_df.at['Euro','1.00 USD'])
+        else:
+            print('currency not found!')
+            
+            
             
     def toINR(self):
         if 'Indian Rupee' in currencies:
@@ -123,8 +135,22 @@ class calculator(object):
             return self * rates_df.at['Canadian Dollar', 'inv. 1.00 USD']
         else:
             print('currency not found!')
+    
+    def CADtoEUR(self):
+        if 'Canadian Dollar' and 'Euro' in currencies:
+            return self * (rates_df.at['Canadian Dollar', 'inv. 1.00 USD'] * rates_df.at['Euro','1.00 USD'])
+        else:
+            print('currency not found!')
             
             
+            
+    def EURtoCAD(self):
+        if 'Canadian Dollar' and 'Euro' in currencies:
+            return self * (rates_df.at['Euro','inv. 1.00 USD'] * rates_df.at['Canadian Dollar', '1.00 USD'])
+        else:
+            print('currency not found!')
+            
+    
     
     def toSGD(self):
         if 'Singapore Dollar' in currencies:
@@ -214,6 +240,8 @@ class calculator(object):
         else:
             print('currency not found!')
 
-#exchange 200 GBP to CNY
-#print(calculator.GBPtoCNY(200))
-            
+
+
+
+#print 200 EUR to CAD
+print(calculator.EURtoCAD(200))
