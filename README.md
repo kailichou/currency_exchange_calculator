@@ -14,3 +14,19 @@ Feel free to download the file to calculate curencies for fun or import it for o
 - Malaysian Ringgit 
 - Japanese Yen
 - Chinese Yuan Renminbi
+
+
+## An example
+
+Packages used in this script
+- BeautifulSoup
+- Pandas
+- urllib (built-in)
+
+You need to exchange **$100 for pounds**, import the script, then type
+
+```Calculator.USDtoGBP(100)```
+
+Return 
+
+```71.6888```
