@@ -16,12 +16,17 @@ Feel free to download the file to calculate curencies for fun or import it for o
 - Chinese Yuan Renminbi
 
 
-## An example
 
-Packages used in this script
+## Dependencies
+
 - BeautifulSoup
 - Pandas
 - urllib (built-in)
+
+
+
+## An example
+
 
 You need to exchange **$100 for pounds**, import the script, then type
 
