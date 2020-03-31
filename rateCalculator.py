@@ -13,6 +13,8 @@ from urllib.request import urlopen as uReq
 import pandas as pd
 
 
+
+container = [] #global variable so we can use after running def function
 ##the website that we will scrape currency exchange rates
 url = 'https://www.x-rates.com/table/?from=USD&amount=1'
 
@@ -21,36 +23,32 @@ def crawler(self):
     The crawler will scrape from x-rates.com and collect Top 10 exchange rates.
     The rates will be renew on a daily basis.
     """ 
-    global rates
-    container = []
+
     webpage = uReq(self).read()
     html = soup(webpage, "html.parser")
-    
-    
-    for containers in html.find_all("tr", limit = 11):
-        container.append(containers.text.strip())
 
-    rates = [i.split('\n') for i in container]
-    
-    
+    for containers in html.find_all("tr", limit = 11):
+        container.append(str(containers.text.strip()))
+
 
 ##run crawler function to collect up-to-date exchange rates
 crawler(url)
 
 
 ### clean the exchange rates before using calculator class to exchange your currency
+rates = [i.split('\n') for i in container]
 rates_df = pd.DataFrame(rates, columns=rates[0])
 rates_df.set_index('US Dollar', inplace=True)
 rates_df = rates_df.drop('US Dollar')
 rates_df = rates_df[['1.00 USD','inv. 1.00 USD']].astype('float64')
+#rates_df.dtypes
 currencies = rates_df.index.values
-#rates_df.to_csv('currencyrates.csv') #save exchange rate to a csv file
-
-
+#rates_df.to_csv('exchange_rates.csv')
 
 class calculator(object):
-       
-    def toEUR(self):
+    
+        
+    def USDtoEUR(self):
         if 'Euro' in currencies:
             return self * rates_df.at['Euro','1.00 USD']
         else:
@@ -70,7 +68,7 @@ class calculator(object):
             print('currency not found!')
  
 
-    def toGBP(self):
+    def USDtoGBP(self):
         if 'British Pound' in currencies:
             return self * rates_df.at['British Pound','1.00 USD']
         else:
@@ -84,7 +82,7 @@ class calculator(object):
             print('currency not found!')
 
             
-    def toINR(self):
+    def USDtoINR(self):
         if 'Indian Rupee' in currencies:
             return self * rates_df.at['Indian Rupee','1.00 USD']
         else:
@@ -98,7 +96,7 @@ class calculator(object):
             print('currency not found!')
   
 
-    def toAUD(self):
+    def USDtoAUD(self):
         if 'Australian Dollar' in currencies:
             return self * rates_df.at['Australian Dollar','1.00 USD']
         else:
@@ -112,7 +110,7 @@ class calculator(object):
             print('currency not found!')
     
     
-    def toCAD(self):
+    def USDtoCAD(self):
         if 'Canadian Dollar' in currencies:
             return self * rates_df.at['Canadian Dollar', '1.00 USD']
         else:
@@ -127,7 +125,7 @@ class calculator(object):
             
             
     
-    def toSGD(self):
+    def USDtoSGD(self):
         if 'Singapore Dollar' in currencies:
             return self * rates_df.at['Singapore Dollar', '1.00 USD']
         else:
@@ -142,7 +140,7 @@ class calculator(object):
             print('currency not found!')
             
             
-    def toCHF(self):
+    def USDtoCHF(self):
         if 'Swiss Franc' in currencies:
             return self * rates_df.at['Swiss Franc', '1.00 USD']
         else:
@@ -160,7 +158,7 @@ class calculator(object):
     
     
     
-    def toMYR(self):
+    def USDtoMYR(self):
         if 'Malaysian Ringgit' in currencies:
             return self * rates_df.at['Malaysian Ringgit', '1.00 USD']
         else:
@@ -177,7 +175,7 @@ class calculator(object):
             
             
        
-    def toJPY(self):
+    def USDtoJPY(self):
         if 'Japanese Yen' in currencies:
             return self * rates_df.at['Japanese Yen', '1.00 USD']
         else:
@@ -193,7 +191,7 @@ class calculator(object):
             
     
     
-    def toCNY(self):
+    def USDtoCNY(self):
         if 'Chinese Yuan Renminbi' in currencies:
             return self * rates_df.at['Chinese Yuan Renminbi','1.00 USD']
         else:
@@ -218,5 +216,5 @@ class calculator(object):
 
 
 
-#print 200 EUR to CAD
-print(calculator.EURtoCAD(200))
+#exchange 200 EUR to CAD
+#print(calculator.EURtoCAD(200))
