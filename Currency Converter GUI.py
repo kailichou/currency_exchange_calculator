@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from tkinter import *
-from PIL import ImageTk, Image
+#from PIL import ImageTk, Image
 from datetime import datetime
 import numpy as np
 from bs4 import BeautifulSoup as soup
