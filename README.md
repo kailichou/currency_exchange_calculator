@@ -20,9 +20,10 @@ Feel free to download the file to calculate curencies for fun or import it for o
 ## Dependencies
 
 - BeautifulSoup
-- Pandas
+- NumPy
 - urllib (built-in)
-
+- Tkinter
+- DateTime
 
 
 ## Calculater Class example
