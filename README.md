@@ -25,7 +25,7 @@ Feel free to download the file to calculate curencies for fun or import it for o
 
 
 
-## An example
+## Calculater Class example
 
 
 You need to exchange **$100 for pounds**, import the script, then type
@@ -35,3 +35,6 @@ You need to exchange **$100 for pounds**, import the script, then type
 Return 
 
 ```76.1888```
+
+## GUI converter example
+
