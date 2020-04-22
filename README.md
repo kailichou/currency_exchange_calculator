@@ -37,4 +37,5 @@ Return
 ```76.1888```
 
 ## GUI converter example
-
+[](https://github.com/kailichou/currency_exchange_calculator/blob/master/pic/example%201.png)
+[]
